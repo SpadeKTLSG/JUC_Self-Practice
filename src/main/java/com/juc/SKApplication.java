@@ -7,6 +7,7 @@ public class SKApplication {
 
     public static void main(String[] args) {
         log.info("Hello SK");
+
     }
 
 }

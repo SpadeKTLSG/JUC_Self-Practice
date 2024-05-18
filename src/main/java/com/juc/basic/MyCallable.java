@@ -2,11 +2,13 @@ package com.juc.basic;
 
 import lombok.Data;
 
+import java.util.concurrent.Callable;
+
 /**
- * Runnable实现 线程
+ * Callable实现 线程
  */
 @Data
-public class MyRunnable implements Runnable {
+public class MyCallable implements Callable<String> {
 
     /**
      * 唯一id
@@ -23,15 +25,16 @@ public class MyRunnable implements Runnable {
      */
     public String data; //V
 
-    public MyRunnable(String name) {
+
+    public MyCallable(String name) {
         this.name = name;
         this.data = java.time.LocalTime.now().toString();
         this.id = data.hashCode();
     }
 
     @Override
-    public void run() {
-        System.out.println((name + " [ " + id + " ] says: " + data)); //run调用, 手动打印
+    public String call() {
+        return (name + " [ " + id + " ] says: " + data); //call调用, 自动返回内容
     }
 
 }
